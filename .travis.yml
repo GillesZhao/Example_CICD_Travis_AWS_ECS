@@ -20,9 +20,9 @@ jobs:
 
       - docker build -t $AP_NAME .
 
-      - docker tag $AP_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/ap/$AP_NAME:latest
+      - docker tag $AP_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AP_NAME:latest
 
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/ap/$AP_NAME:latest
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AP_NAME:latest
 
   - stage: run ap tests
 
