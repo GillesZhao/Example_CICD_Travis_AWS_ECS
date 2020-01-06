@@ -1,0 +1,5 @@
+botocore==1.13.35
+redis==3.3.11
+Jinja2==2.10.1
+flask==1.1.1
+
