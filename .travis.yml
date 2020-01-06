@@ -1,0 +1,48 @@
+language: python
+
+
+
+before_install:
+
+  - pip install awscli
+
+
+
+jobs:
+
+  include:
+
+  - stage: build and push ap docker image to aws ecr
+
+    script:
+
+      - eval $(aws ecr get-login --no-include-email)
+
+      - docker build -t $AP_NAME .
+
+      - docker tag $AP_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/ap/$AP_NAME:latest
+
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/ap/$AP_NAME:latest
+
+  - stage: run ap tests
+
+    script: echo "Test1 Finish"
+
+  - stage: deploy ap to aws batch
+
+    script: skip
+
+    
+
+notifications:
+
+  slack:
+
+    on_pull_requests: true
+
+    rooms:
+     - juwai:BnihlKlSqagkR1FS7agVecXg
+
+    on_success: always # default: always
+
+    on_failure: always # default: always
