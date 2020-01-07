@@ -18,11 +18,18 @@ jobs:
 
       - eval $(aws ecr get-login --no-include-email)
 
-      - docker build -t $AP_NAME .
+      - docker build -t $python_NAME . --target app-python
 
-      - docker tag $AP_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AP_NAME:latest
+      - docker tag $python_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:latest
 
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AP_NAME:latest
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:latest
+
+      - docker build -t $redis_NAME . --target app-redis
+
+      - docker tag $redis_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:latest
+
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:latest
+
 
   - stage: run ap tests
 
