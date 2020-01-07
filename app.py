@@ -5,6 +5,10 @@ from flask import Flask
 app = Flask(__name__)
 cache = redis.Redis(host='redis', port=6379)
 
+def application(env, start_response):
+    start_response('200 OK', [('Content-Type','text/html')])
+    return [b"Hello World"]
+
 def get_hit_count():
     retries = 5
     while True:
