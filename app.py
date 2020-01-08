@@ -24,7 +24,7 @@ def hello():
       return 'Hello World! Juwai website version {} is coming.\n'.format(count)
     else: 
       return 'Hello World! Feature HW-88{} has been successfully applied.\n'.format(count)
-return 'DevOps is coming'
+      return 'DevOps is coming'
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
