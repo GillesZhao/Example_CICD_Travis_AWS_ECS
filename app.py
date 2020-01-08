@@ -20,11 +20,12 @@ def get_hit_count():
 @app.route('/')
 def hello():
     count = get_hit_count()
-    if count == 1:
+    if count <= 10:
+      return 'DevOps is coming. count = {}\n'.format(count)
+    elif count < 20:
       return 'Hello World! Juwai website version {} is coming.\n'.format(count)
     else: 
       return 'Hello World! Feature HW-88{} has been successfully applied.\n'.format(count)
-      return 'DevOps is coming'
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
