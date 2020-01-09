@@ -20,12 +20,12 @@ def get_hit_count():
 @app.route('/')
 def hello():
     count = get_hit_count()
-    if count <= 10:
-      return 'Juwai website new version deployed. count = {}\n'.format(count)
-    elif count < 20:
+    if count <= 30:
+      return 'Hello world! Juwai website new version deployed. count = {}\n'.format(count)
+  elif count < 50:
       return 'Hello World! Juwai website version {} is coming.\n'.format(count)
     else:
-      return 'Hello World! Feature HW-88{} has been successfully applied.\n'.format(count)
+      return 'Hello Juwaiers! Feature HW-8{} has been successfully applied.\n'.format(count)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
