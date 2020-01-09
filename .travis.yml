@@ -1,24 +1,28 @@
 language: python
 
-
-
 before_install:
 
   - pip install awscli
-
-
 
 jobs:
 
   include:
 
-  - stage: build and push ap docker image to aws ecr
+  - stage: build and push app docker image to aws ecr
 
     script:
 
+      - echo `aws --version`
+
+      - echo Logging in to Amazon ECR...
+
       - eval $(aws ecr get-login --no-include-email)
 
+      - echo Entered the build phase...
+
       - docker build -t $python_NAME . --target app-python
+
+      - echo Tag and Push the docker images to aws ecr...
 
       - docker tag $python_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:latest
 
@@ -30,16 +34,18 @@ jobs:
 
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:latest
 
-
   - stage: run ap tests
 
     script: echo "Test1 Finish"
 
-  - stage: deploy ap to aws batch
+  - stage: Deploy app to aws ecs...
 
-    script: skip
+    script:
 
-    
+      - echo Updating aws ecs task definitions...
+
+      - aws ecs update-service --cluster "ecs-poc" --service "ecs_poc_new" --force-new-deployment
+
 
 notifications:
 
