@@ -23,7 +23,7 @@ def hello():
     if count <= 30:
       return 'Wonderful! Juwai website new version deployed. count = {}\n'.format(count)
     elif count < 50:
-      return 'Hello World! Juwai website version {} is coming.\n'.format(count)
+      return 'Hello Gary! Juwai website version {} is coming.\n'.format(count)
     else:
       return 'Hello Juwaiers! Feature HW-8{} has been successfully applied.\n'.format(count)
 
