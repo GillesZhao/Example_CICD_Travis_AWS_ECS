@@ -21,7 +21,7 @@ def get_hit_count():
 def hello():
     count = get_hit_count()
     if count <= 30:
-      return 'Hello world! Juwai website new version deployed. count = {}\n'.format(count)
+      return 'Wonderful! Juwai website new version deployed. count = {}\n'.format(count)
     elif count < 50:
       return 'Hello World! Juwai website version {} is coming.\n'.format(count)
     else:
