@@ -1,5 +1,5 @@
 #!/usr/bin/python2.7
-import time  
+import time
 import redis
 from flask import Flask
 
@@ -21,12 +21,11 @@ def get_hit_count():
 def hello():
     count = get_hit_count()
     if count <= 10:
-      return 'DevOps is coming. count = {}\n'.format(count)
+      return 'Juwai website new version deployed. count = {}\n'.format(count)
     elif count < 20:
       return 'Hello World! Juwai website version {} is coming.\n'.format(count)
-    else: 
+    else:
       return 'Hello World! Feature HW-88{} has been successfully applied.\n'.format(count)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
-
