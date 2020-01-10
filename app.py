@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 import time
 import redis
 from flask import Flask
@@ -21,10 +20,15 @@ def get_hit_count():
 def hello():
     count = get_hit_count()
     if count <= 30:
+<<<<<<< HEAD
       #return 'Wonderful! Juwai website new version deployed. count = {}\n'.format(count)
       return 'This is Juwai old website ok. count = {}\n'.format(count)
+=======
+      return 'Wonderful! Juwai website new version deployed. count = {}\n'.format(count)
+      #return 'This is Juwai old website. count = {}\n'.format(count)
+>>>>>>> master
     elif count < 50:
-      return 'Hello Gary! Juwai website version {} is coming.\n'.format(count)
+      return 'Hello Guys! Juwai website version {} is coming.\n'.format(count)
     else:
       return 'Hello Juwaiers! Feature HW-8{} has been successfully applied.\n'.format(count)
 
