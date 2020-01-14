@@ -28,7 +28,7 @@ jobs:
 
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:HW-287
 
-      - docker build -t $redis_NAME . --target app-redis
+      - docker build -t $redis_NAME:HW-287 . --target app-redis
 
       - docker tag $redis_NAME:HW-287 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:HW-287
 
