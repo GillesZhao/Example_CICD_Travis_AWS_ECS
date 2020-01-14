@@ -24,15 +24,15 @@ jobs:
 
       - echo Tag and Push the docker images to aws ecr...
 
-      - docker tag $python_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:latest
+      - docker tag $python_NAME:HW-287 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:HW-287
 
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:latest
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:HW-287
 
       - docker build -t $redis_NAME . --target app-redis
 
-      - docker tag $redis_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:latest
+      - docker tag $redis_NAME:HW-287 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:HW-287
 
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:latest
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:HW-287
 
   - stage: run ap tests
 
