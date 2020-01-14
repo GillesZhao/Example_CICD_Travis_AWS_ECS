@@ -44,7 +44,7 @@ jobs:
 
       - echo Updating aws ecs task definitions...
 
-      - aws ecs update-service --cluster "ecs-poc" --service "ecs_poc_new" --force-new-deployment
+      - aws ecs update-service --cluster "ecs-poc" --service "ecs_poc_HW_287" --force-new-deployment
 
 
 notifications:
