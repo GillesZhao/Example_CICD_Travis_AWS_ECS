@@ -20,19 +20,19 @@ jobs:
 
       - echo Entered the build phase...
 
-      - docker build -t $python_NAME . --target app-python
+      - docker build -t $python_NAME:$TRAVIS_BRANCH . --target app-python
 
       - echo Tag and Push the docker images to aws ecr...
 
-      - docker tag $python_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:latest
+      - docker tag $python_NAME:$TRAVIS_BRANCH $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:$TRAVIS_BRANCH
 
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:latest
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:$TRAVIS_BRANCH
 
-      - docker build -t $redis_NAME . --target app-redis
+      - docker build -t $redis_NAME:$TRAVIS_BRANCH . --target app-redis
 
-      - docker tag $redis_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:latest
+      - docker tag $redis_NAME:$TRAVIS_BRANCH $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:$TRAVIS_BRANCH
 
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:latest
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:$TRAVIS_BRANCH
 
   - stage: run ap tests
 
@@ -44,7 +44,7 @@ jobs:
 
       - echo Updating aws ecs task definitions...
 
-      - aws ecs update-service --cluster "ecs-poc" --service "ecs_poc_new" --force-new-deployment
+      - aws ecs update-service --cluster "ecs-poc" --service "ecs_poc_$TRAVIS_BRANCH" --force-new-deployment
 
 
 notifications:
