@@ -44,7 +44,7 @@ jobs:
 
       - echo Updating aws ecs task definitions...
 
-      - aws ecs update-service --cluster "ecs-poc" --service "ecs_poc_$TRAVIS_BRANCH" --force-new-deployment
+      - aws ecs update-service --cluster "ecs-poc" --service "$TRAVIS_BRANCH" --force-new-deployment
 
 
 notifications:
