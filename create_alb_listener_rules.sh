@@ -1,6 +1,6 @@
 #!/bin/bash
 
-targetgrouparn=`aws elbv2 describe-target-groups | grep -i $TRAVIS_BRANCH | grep -i TargetGroupArn`
+targetgrouparn=`aws elbv2 describe-target-groups | grep -w $TRAVIS_BRANCH | grep -i TargetGroupArn`
 targetgrouparn=`echo ${targetgrouparn##*: \"}`
 targetgrouparn=`echo ${targetgrouparn%%\"*}`
 
