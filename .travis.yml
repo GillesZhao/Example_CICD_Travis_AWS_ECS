@@ -46,7 +46,7 @@ jobs:
 
       - aws ecs update-service --cluster "ecs-poc" --service "hw-2877" --force-new-deployment
 
-      - aws route53 change-resource-record-sets --hosted-zone-id Z14JIGC687R7OP --change-batch file://create_route53_alias.json
+      - ./create_route53_alias.sh
 
 notifications:
 
