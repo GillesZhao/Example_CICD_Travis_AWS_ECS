@@ -9,3 +9,5 @@ aws elbv2 create-rule \
     --priority $RANDOM \
     --conditions '{ "Field": "host-header", "HostHeaderConfig": { "Values": ["'"$TRAVIS_BRANCH"'.*"]  }  }' \
     --actions Type=forward,TargetGroupArn=$targetgrouparn
+
+exit 0    
