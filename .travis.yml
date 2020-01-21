@@ -4,6 +4,7 @@ before_install:
 
   - pip install awscli
   - chmod +x create_route53_alias.sh
+  - chmod +x create_alb_listener_rules.sh
 
 jobs:
 
@@ -48,7 +49,7 @@ jobs:
       - aws ecs update-service --cluster "ecs-poc" --service "hw-2877" --force-new-deployment
 
       - ./create_route53_alias.sh
-      - 
+      - ./create_alb_listener_rules.sh
 
 notifications:
 
