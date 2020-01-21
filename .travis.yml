@@ -48,6 +48,7 @@ jobs:
       - aws ecs update-service --cluster "ecs-poc" --service "hw-2877" --force-new-deployment
 
       - ./create_route53_alias.sh
+      - 
 
 notifications:
 
