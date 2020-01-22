@@ -49,6 +49,7 @@ jobs:
       - aws ecs update-service --cluster "ecs-poc" --service "$TRAVIS_BRANCH" --force-new-deployment
 
       - ./create_route53_alias.sh
+      
       - ./create_alb_listener_rules.sh
 
 notifications:
