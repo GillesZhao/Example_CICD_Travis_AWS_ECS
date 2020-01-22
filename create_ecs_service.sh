@@ -16,3 +16,7 @@ targetgrouparn=`echo ${targetgrouparn%%\"*}`
 --network-configuration "awsvpcConfiguration={subnets=[subnet-04f8f669b07b090e4,subnet-0801d41e55a936e9d,subnet-0f510f0f386b882c0],securityGroups=[sg-01b5fc974468ac57b],assignPublicIp=ENABLED}" \
 --health-check-grace-period-seconds 0 \
 --scheduling-strategy REPLICA \
+
+if [ $? -eq 255 ];then
+  aws ecs update-service --cluster "ecs-poc" --service "$TRAVIS_BRANCH" --task-definition $TRAVIS_BRANCH
+fi
