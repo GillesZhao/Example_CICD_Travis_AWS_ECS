@@ -6,6 +6,7 @@ before_install:
   - chmod +x create_route53_alias.sh
   - chmod +x create_alb_listener_rules.sh
   - chmod +x create_task_definitions.sh
+  - chmod +x create_ecs_service.sh
 
 jobs:
 
@@ -49,7 +50,7 @@ jobs:
 
       - ./create_task_definitions.sh
 
-      - aws ecs update-service --cluster "ecs-poc" --service "$TRAVIS_BRANCH" --force-new-deployment
+      - ./create_ecs_service.sh
 
       - ./create_route53_alias.sh
       
