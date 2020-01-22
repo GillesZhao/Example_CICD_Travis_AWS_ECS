@@ -7,6 +7,7 @@ before_install:
   - chmod +x create_alb_listener_rules.sh
   - chmod +x create_task_definitions.sh
   - chmod +x create_ecs_service.sh
+  - chmod +x create_alb_target_group.sh
 
 jobs:
 
@@ -48,6 +49,8 @@ jobs:
 
       - echo Updating aws ecs task definitions... 
 
+      - ./create_alb_target_group.sh
+
       - ./create_task_definitions.sh
 
       - ./create_alb_listener_rules.sh
@@ -55,6 +58,8 @@ jobs:
       - ./create_ecs_service.sh
 
       - ./create_route53_alias.sh
+
+      
       
       
 
