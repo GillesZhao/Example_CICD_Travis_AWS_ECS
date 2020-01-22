@@ -14,7 +14,7 @@ aws ecs register-task-definition \
 "[
 {
     \"name\": \"ecs_poc_app_python\",
-    \"image\": \"$python_image_url\",
+    \"image\": \"$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$python_NAME:$TRAVIS_BRANCH\",
     \"cpu\": 0,
     \"memory\": 100,
     \"portMappings\": [
@@ -34,7 +34,7 @@ aws ecs register-task-definition \
   },
   {
     \"name\": \"ecs_poc_app_redis\",
-    \"image\": \"$redis_image_url\",
+    \"image\": \"$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:$TRAVIS_BRANCH\",
     \"cpu\": 0,
     \"memory\": 100,
     \"portMappings\": [
