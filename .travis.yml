@@ -50,11 +50,13 @@ jobs:
 
       - ./create_task_definitions.sh
 
+      - ./create_alb_listener_rules.sh
+
       - ./create_ecs_service.sh
 
       - ./create_route53_alias.sh
       
-      - ./create_alb_listener_rules.sh
+      
 
 notifications:
 
