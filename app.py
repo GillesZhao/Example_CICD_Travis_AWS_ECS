@@ -24,6 +24,11 @@ def hello():
       #return 'This is Juwai old website. count = {}\n'.format(count)
       #return 'HW-277 RPC IQI agent registion . count = {}\n'.format(count)
       return 'HW-2666 CICD Pipeline is ready . New delivery'
+      #return 'Wonderful! Juwai website new version deployed. count = {}\n'.format(count)
+      #return 'This is Juwai old website. count = {}\n'.format(count)
+      #return 'HW-277 RPC IQI agent registion . count = {}\n'.format(count)
+      #return 'HW-287 RPC function for password . \n'.format(count)
+      return 'Merge HW-290 RPC python version upgrade into master . \n'
     elif count < 5000:
       return 'Hello Guys! Juwai website version {} is coming.\n'.format(count)
     else:
