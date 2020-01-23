@@ -3,6 +3,11 @@ language: python
 before_install:
 
   - pip install awscli
+  - chmod +x create_route53_alias.sh
+  - chmod +x create_alb_listener_rules.sh
+  - chmod +x create_task_definitions.sh
+  - chmod +x create_ecs_service.sh
+  - chmod +x create_alb_target_group.sh
 
 jobs:
 
@@ -42,10 +47,21 @@ jobs:
 
     script:
 
-      - echo Updating aws ecs task definitions...
+      - echo Updating aws ecs task definitions... 
 
-      - aws ecs update-service --cluster "ecs-poc" --service "ecs_poc_$TRAVIS_BRANCH" --force-new-deployment
+      - ./create_alb_target_group.sh
 
+      - ./create_task_definitions.sh
+
+      - ./create_alb_listener_rules.sh
+
+      - ./create_ecs_service.sh
+
+      - ./create_route53_alias.sh
+
+      
+      
+      
 
 notifications:
 
