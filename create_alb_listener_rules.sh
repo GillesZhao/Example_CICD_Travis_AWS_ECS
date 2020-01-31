@@ -25,7 +25,7 @@ fi
 
 else 
   
-  if [ $rule_arn -ne "" ];then
+  if [ $rule_arn != "" ];then
     aws elbv2 delete-rule \
      --rule-arn $rule_arn
   fi
