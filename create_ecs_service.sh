@@ -4,6 +4,8 @@ targetgrouparn=`aws elbv2 describe-target-groups | grep -w $TRAVIS_BRANCH | grep
 targetgrouparn=`echo ${targetgrouparn##*: \"}`
 targetgrouparn=`echo ${targetgrouparn%%\"*}`
 
+if [ $deletion_mark -ne 1 ];then
+
  aws ecs create-service \
 --cluster ecs-poc \
 --service-name $TRAVIS_BRANCH \
@@ -20,3 +22,4 @@ targetgrouparn=`echo ${targetgrouparn%%\"*}`
 if [ $? -eq 255 ];then
   aws ecs update-service --cluster "ecs-poc" --service "$TRAVIS_BRANCH" --task-definition $TRAVIS_BRANCH
 fi
+
