@@ -9,7 +9,7 @@ before_install:
   - chmod +x create_task_definitions.sh
   - chmod +x create_ecs_service.sh
   - chmod +x create_alb_target_group.sh
-  - export deletion_mark=0
+  - export deletion_mark=1
   
 jobs:
 
