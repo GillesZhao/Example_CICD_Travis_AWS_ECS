@@ -23,3 +23,11 @@ if [ $? -eq 255 ];then
   aws ecs update-service --cluster "ecs-poc" --service "$TRAVIS_BRANCH" --task-definition $TRAVIS_BRANCH
 fi
 
+else 
+  
+  aws ecs delete-service \
+  --cluster ecs-poc \
+  --service $TRAVIS_BRANCH \
+  --force
+
+fi  
