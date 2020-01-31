@@ -3,7 +3,7 @@ language: python
 before_install:
 
   - pip install awscli
-  - apt-get install jq -y
+  - sudo apt-get install jq -y
   - chmod +x create_route53_alias.sh
   - chmod +x create_alb_listener_rules.sh
   - chmod +x create_task_definitions.sh
