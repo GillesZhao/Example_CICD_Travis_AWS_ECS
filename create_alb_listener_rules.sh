@@ -26,4 +26,7 @@ fi
 else 
   aws elbv2 delete-rule \
      --rule-arn $rule_arn
+
+  aws elbv2 delete-target-group \
+    --target-group-arn $targetgrouparn  
 fi     
