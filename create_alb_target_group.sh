@@ -9,4 +9,7 @@ aws elbv2 create-target-group \
     --target-type ip \
     --vpc-id vpc-00016262d7b12e54c
 
+else
+  echo "This is a resources deletion operation."
+
 fi
