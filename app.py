@@ -1,6 +1,6 @@
 import time
 import redis
-import os
+import random
 from flask import Flask
 
 app = Flask(__name__)
@@ -29,7 +29,7 @@ def hello():
       #return 'This is Juwai old website. count = {}\n'.format(count)
       #return 'HW-277 RPC IQI agent registion . count = {}\n'.format(count)
       #return 'HW-287 RPC function for password . \n'.format(count)
-      return '{} RPC python version upgrade.\n'.format(os.getenv('RANDOM')) 
+      return '{} RPC python version upgrade.\n'.format(random.randint(50000,90000)) 
     elif count < 5000:
       return 'Hello Guys! Juwai website version {} is coming.\n'.format(count)
     else:
