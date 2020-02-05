@@ -25,9 +25,10 @@ fi
 
 else 
   
-  aws ecs delete-service \
-  --cluster ecs-poc \
-  --service $TRAVIS_BRANCH \
-  --force
+  echo ok
+#   aws ecs delete-service \
+#   --cluster ecs-poc \
+#   --service $TRAVIS_BRANCH \
+#   --force
 
 fi  
