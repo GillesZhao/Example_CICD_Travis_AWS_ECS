@@ -10,27 +10,17 @@ if [ $deletion_mark -ne 1 ];then
 
 aws elbv2 describe-rules --listener-arn arn:aws:elasticloadbalancing:ap-southeast-1:468969217647:listener/app/alb-ecs-poc/4dc026513826bb09/5e24430998b64e52 | grep -w $TRAVIS_BRANCH 
 
-if [ $? -ne 0 ];then
+  if [ $? -ne 0 ];then
  
-aws elbv2 create-rule \
-    --listener-arn arn:aws:elasticloadbalancing:ap-southeast-1:468969217647:listener/app/alb-ecs-poc/4dc026513826bb09/5e24430998b64e52 \
+    aws elbv2 create-rule \
+    --listener-arn arn:aws:elasticloadbalancing:ap-southeast-1:468969217647:listener/    app/alb-ecs-poc/4dc026513826bb09/5e24430998b64e52 \
     --priority $RANDOM \
-    --conditions '{ "Field": "host-header", "HostHeaderConfig": { "Values": ["'"$TRAVIS_BRANCH"'.*"]  }  }' \
+    --conditions '{ "Field": "host-header", "HostHeaderConfig": { "Values":["'"$TRAVIS_BRANCH"'.*"]  }  }' \
     --actions Type=forward,TargetGroupArn=$targetgrouparn
-else
-  echo "listener rule already exists"
+  else
+    echo "listener rule already exists"
   exit 0    
   
-fi
+  fi
 
-else 
-  
-  echo ok
-#   if [ $rule_arn != "" ];then
-#     aws elbv2 delete-rule \
-#      --rule-arn $rule_arn
-#   fi
-  
-#   aws elbv2 delete-target-group \
-#     --target-group-arn $targetgrouparn  
 fi     
