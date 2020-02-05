@@ -25,11 +25,12 @@ fi
 
 else 
   
-  if [ $rule_arn != "" ];then
-    aws elbv2 delete-rule \
-     --rule-arn $rule_arn
-  fi
+  echo ok
+#   if [ $rule_arn != "" ];then
+#     aws elbv2 delete-rule \
+#      --rule-arn $rule_arn
+#   fi
   
-  aws elbv2 delete-target-group \
-    --target-group-arn $targetgrouparn  
+#   aws elbv2 delete-target-group \
+#     --target-group-arn $targetgrouparn  
 fi     
