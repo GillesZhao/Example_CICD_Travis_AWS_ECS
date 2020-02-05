@@ -19,16 +19,8 @@ if [ $deletion_mark -ne 1 ];then
 --health-check-grace-period-seconds 0 \
 --scheduling-strategy REPLICA \
 
-if [ $? -eq 255 ];then
-  aws ecs update-service --cluster "ecs-poc" --service "$TRAVIS_BRANCH" --task-definition $TRAVIS_BRANCH
-fi
-
-else 
-  
-  echo ok
-#   aws ecs delete-service \
-#   --cluster ecs-poc \
-#   --service $TRAVIS_BRANCH \
-#   --force
+  if [ $? -eq 255 ];then
+    aws ecs update-service --cluster "ecs-poc" --service "$TRAVIS_BRANCH"  --task-definition $TRAVIS_BRANCH
+  fi
 
 fi  
