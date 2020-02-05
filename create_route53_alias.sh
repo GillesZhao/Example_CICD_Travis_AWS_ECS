@@ -6,4 +6,7 @@ aws route53 change-resource-record-sets --hosted-zone-id Z14JIGC687R7OP --change
 
 exit 0
 
+else
+  echo "This is a resources deletion operation."
+
 fi
