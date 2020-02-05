@@ -2,6 +2,8 @@
 
 #--cli-input-json  file://task_definition.json
 
+if [ $deletion_mark -ne 1 ];then
+
 aws ecs register-task-definition \
 --family $TRAVIS_BRANCH \
 --task-role-arn arn:aws:iam::468969217647:role/AmazonECSTaskExecutionRole \
@@ -54,6 +56,10 @@ aws ecs register-task-definition \
   }
 ]"
 
+else 
+  echo "This is a resources deletion operation."
+ 
+fi
 # "requiresCompatibilities": [
 #             "FARGATE"
 #         ]
