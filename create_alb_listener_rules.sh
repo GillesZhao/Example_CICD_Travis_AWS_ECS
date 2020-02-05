@@ -23,4 +23,7 @@ aws elbv2 describe-rules --listener-arn arn:aws:elasticloadbalancing:ap-southeas
   
   fi
 
+else
+  echo "This is a resources deletion operation."
+
 fi     
