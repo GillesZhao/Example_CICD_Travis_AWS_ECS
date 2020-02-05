@@ -4,15 +4,16 @@ targetgrouparn=`aws elbv2 describe-target-groups | grep -w $TRAVIS_BRANCH | grep
 targetgrouparn=`echo ${targetgrouparn##*: \"}`
 targetgrouparn=`echo ${targetgrouparn%%\"*}`
 
+
 rule_arn=`aws elbv2 describe-rules --listener-arn arn:aws:elasticloadbalancing:ap-southeast-1:468969217647:listener/app/alb-ecs-poc/4dc026513826bb09/5e24430998b64e52 | jq -c '.Rules[]| select(.Conditions[].Values[]| contains("'"$TRAVIS_BRANCH"'"))' | jq -r '.RuleArn'`
 
 if [ $deletion_mark -eq 1 ];then
 
 #Delete ALB listener rules
-   if [ $rule_arn != "" ];then
+   if [ -n "$rule_arn" ];then
     aws elbv2 delete-rule \
      --rule-arn $rule_arn
-  fi
+   fi
 
 #Delete ALB target group 
   aws elbv2 delete-target-group \
