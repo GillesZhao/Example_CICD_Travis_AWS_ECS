@@ -23,4 +23,7 @@ if [ $deletion_mark -ne 1 ];then
     aws ecs update-service --cluster "ecs-poc" --service "$TRAVIS_BRANCH"  --task-definition $TRAVIS_BRANCH
   fi
 
+else
+  echo "This is a resources deletion operation."
+  
 fi  
