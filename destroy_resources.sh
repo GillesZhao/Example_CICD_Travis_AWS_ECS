@@ -1,5 +1,9 @@
 #!/bin/bash
 
+targetgrouparn=`aws elbv2 describe-target-groups | grep -w $TRAVIS_BRANCH | grep -i TargetGroupArn`
+targetgrouparn=`echo ${targetgrouparn##*: \"}`
+targetgrouparn=`echo ${targetgrouparn%%\"*}`
+
 rule_arn=`aws elbv2 describe-rules --listener-arn arn:aws:elasticloadbalancing:ap-southeast-1:468969217647:listener/app/alb-ecs-poc/4dc026513826bb09/5e24430998b64e52 | jq -c '.Rules[]| select(.Conditions[].Values[]| contains("'"$TRAVIS_BRANCH"'"))' | jq -r '.RuleArn'`
 
 if [ $deletion_mark -eq 1 ];then
