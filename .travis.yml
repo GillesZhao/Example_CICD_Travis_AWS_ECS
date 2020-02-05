@@ -9,13 +9,14 @@ before_install:
   - chmod +x create_task_definitions.sh
   - chmod +x create_ecs_service.sh
   - chmod +x create_alb_target_group.sh
+  - chmod +x destroy_resources.sh
   - export deletion_mark=0
   
 jobs:
 
   include:
 
-  - stage: build and push app docker image to aws ecr
+  - stage: build and push application docker image to aws ecr
 
     script:
 
@@ -43,7 +44,7 @@ jobs:
 
   - stage: run ap tests
 
-    script: echo "Test1 Finish"
+    script: echo "Testing Finish"
 
   - stage: Deploy app to aws ecs...
 
@@ -60,6 +61,8 @@ jobs:
       - ./create_ecs_service.sh
 
       - ./create_route53_alias.sh
+
+      - ./destroy_resources.sh
 
       
       
