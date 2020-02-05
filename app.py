@@ -29,7 +29,7 @@ def hello():
       #return 'This is Juwai old website. count = {}\n'.format(count)
       #return 'HW-277 RPC IQI agent registion . count = {}\n'.format(count)
       #return 'HW-287 RPC function for password . \n'.format(count)
-      return '{} RPC python version upgrade.\n'.format(os.getenv('TRAVIS_BRANCH')) 
+      return '{} RPC python version upgrade.\n'.format(os.getenv('RANDOM')) 
     elif count < 5000:
       return 'Hello Guys! Juwai website version {} is coming.\n'.format(count)
     else:
