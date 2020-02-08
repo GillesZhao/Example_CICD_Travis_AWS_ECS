@@ -49,6 +49,6 @@ if [ $deletion_mark -eq 1 ];then
     echo -e "\033[31m Route53 record set doesn't exist or already deleted \033[0m"
   fi
 else 
-  echo -e "\033[31m This is a resources creation process. Nothing will be deleted. \033[0m" 
+  echo -e "\033[31m This is a resources creation operation. Nothing will be deleted. \033[0m" 
 fi
 
