@@ -56,8 +56,10 @@ aws ecs register-task-definition \
   }
 ]"
 
+echo -e "\033[34m New task definition or its new revision created. \033[0m"
+
 else 
-  echo "This is a resources deletion operation."
+  echo -e "\033[31m This is a resources deletion operation. \033[0m"
  
 fi
 # "requiresCompatibilities": [

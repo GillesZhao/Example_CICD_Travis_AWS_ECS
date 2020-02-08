@@ -19,11 +19,14 @@ if [ $deletion_mark -ne 1 ];then
 --health-check-grace-period-seconds 0 \
 --scheduling-strategy REPLICA \
 
+echo -e "\033[34m ECS service created. \033[0m"
+
   if [ $? -eq 255 ];then
     aws ecs update-service --cluster "ecs-poc" --service "$TRAVIS_BRANCH"  --task-definition $TRAVIS_BRANCH
+    echo -e "\033[34m ECS service updated with new task definition revision. \033[0m"
   fi
 
 else
-  echo "This is a resources deletion operation."
+   echo -e "\033[31m This is a resources deletion operation. \033[0m"
   
 fi  

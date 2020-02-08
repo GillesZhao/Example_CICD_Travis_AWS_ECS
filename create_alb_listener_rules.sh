@@ -17,12 +17,13 @@ aws elbv2 describe-rules --listener-arn arn:aws:elasticloadbalancing:ap-southeas
     --priority $RANDOM \
     --conditions '{ "Field": "host-header", "HostHeaderConfig": { "Values":["'"$TRAVIS_BRANCH"'.*"]  }  }' \
     --actions Type=forward,TargetGroupArn=$targetgrouparn
+    echo -e "\033[34m listener rule created \033[0m"
   else
-    echo "listener rule already exists"
+    echo -e "\033[31m listener rule already exists \033[0m"
     exit 0    
   fi
 
 else
-  echo "This is a resources deletion operation."
+  echo -e "\033[31m This is a resources deletion operation. \033[0m"
 
 fi     
