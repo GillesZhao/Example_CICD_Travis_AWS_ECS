@@ -30,7 +30,7 @@ if [ $deletion_mark -eq 1 ];then
    fi
 
 #Delete ECS service 
-   if [ "$service_status" != "INACTIVE" ];then
+   if [ "$service_status" == "ACTIVE" ];then
      aws ecs delete-service \
       --cluster ecs-poc \
       --service $TRAVIS_BRANCH \
