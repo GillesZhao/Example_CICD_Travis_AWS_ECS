@@ -17,7 +17,7 @@ if [ $deletion_mark -eq 1 ];then
     echo -e "\033[31m ALB listener rule deleted \033[0m"
    else
     echo "ALB listener rule doesn't exist or already deleted"
-    echo -e "\033[31m ALB listener rule deleted \033[0m"
+    echo -e "\033[31;5m ALB listener rule deleted \033[0m"
    fi
 
 #Delete ALB target group 
