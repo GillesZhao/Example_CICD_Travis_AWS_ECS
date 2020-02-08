@@ -14,8 +14,9 @@ if [ $deletion_mark -eq 1 ];then
     aws elbv2 delete-rule \
      --rule-arn $rule_arn
     echo "ALB listener rule deleted" 
+    echo -e "\033[31m ALB listener rule deleted \033[0m"
    else
-    echo "ALB listener rule doesn't exist"
+    echo "ALB listener rule doesn't exist or already deleted"
    fi
 
 #Delete ALB target group 
