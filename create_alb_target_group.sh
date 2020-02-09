@@ -12,7 +12,7 @@ if [ $deletion_mark -ne 1 ];then
     --vpc-id vpc-00016262d7b12e54c
   echo -e "\033[34m ALB target group created. \033[0m"
   else
-  echo -e "\033[31m ALB target group already exist. \033[0m"
+  echo -e "\033[31m ALB target group already exists. \033[0m"
   fi
 else
   echo -e "\033[31m This is a resources deletion operation. \033[0m"
