@@ -10,8 +10,8 @@ before_install:
   - chmod +x create_ecs_service.sh
   - chmod +x create_alb_target_group.sh
   - chmod +x destroy_resources.sh
-  - export deletion_mark=0
-  
+  - export deletion_mark=1
+
 jobs:
 
   include:
@@ -50,7 +50,7 @@ jobs:
 
     script:
 
-      - echo Updating aws ecs task definitions... 
+      - echo Updating aws ecs task definitions...
 
       - ./create_alb_target_group.sh
 
@@ -64,9 +64,9 @@ jobs:
 
       - ./destroy_resources.sh
 
-      
-      
-      
+
+
+
 
 notifications:
 
