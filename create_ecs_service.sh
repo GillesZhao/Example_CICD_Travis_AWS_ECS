@@ -4,8 +4,11 @@ targetgrouparn=`aws elbv2 describe-target-groups | grep -w $TRAVIS_BRANCH | grep
 targetgrouparn=`echo ${targetgrouparn##*: \"}`
 targetgrouparn=`echo ${targetgrouparn%%\"*}`
 
+service_status=`aws ecs describe-services --cluster ecs-poc --services $TRAVIS_BRANCH | jq -r '.services[].status'`
+
 if [ $deletion_mark -ne 1 ];then
 
+ if [ "$service_status" != "ACTIVE" ];then
  aws ecs create-service \
 --cluster ecs-poc \
 --service-name $TRAVIS_BRANCH \
@@ -19,14 +22,13 @@ if [ $deletion_mark -ne 1 ];then
 --health-check-grace-period-seconds 0 \
 --scheduling-strategy REPLICA \
 
-echo -e "\033[34m ECS service created. \033[0m"
+ echo -e "\033[34m ECS service created. \033[0m"
 
-  if [ $? -eq 255 ];then
+ else
     aws ecs update-service --cluster "ecs-poc" --service "$TRAVIS_BRANCH"  --task-definition $TRAVIS_BRANCH
     echo -e "\033[34m ECS service updated with new task definition revision. \033[0m"
-  fi
+ fi
 
 else
    echo -e "\033[31m This is a resources deletion operation. \033[0m"
-  
 fi  
