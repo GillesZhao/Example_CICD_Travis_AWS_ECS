@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alb_target_group=`aws elbv2  describe-target-groups --load-balancer-arn arn:aws:elasticloadbalancing:ap-southeast-1:468969217647:loadbalancer/app/alb-ecs-poc/4dc026513826bb09 |jq -c '.TargetGroups[]|select(.TargetGroupName| contains("'"$TRAVIS_BRANCH"'"))' | jq -r '.TargetGroupName'`
+alb_target_group=`aws elbv2  describe-target-groups --load-balancer-arn arn:aws:elasticloadbalancing:ap-southeast-1:468969217647:loadbalancer/app/alb-ecs-poc/4dc026513826bb09 |jq -c '.TargetGroups[]|select(.TargetGroupName| contains("'"$TRAVIS_BRANCH"'"))' | jq -r '.TargetGroupName' | grep -w $TRAVIS_BRANCH`
 
 if [ $deletion_mark -ne 1 ];then
   if [ -z $alb_target_group ];then
