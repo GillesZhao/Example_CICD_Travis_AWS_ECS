@@ -10,7 +10,7 @@ before_install:
   - chmod +x create_ecs_service.sh
   - chmod +x create_alb_target_group.sh
   - chmod +x destroy_resources.sh
-  - export deletion_mark=1
+  - export deletion_mark=0
 
 jobs:
 
