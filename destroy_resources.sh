@@ -55,6 +55,20 @@ route53_alias=`aws route53 list-resource-record-sets --hosted-zone-id Z14JIGC687
     echo -e "\033[31m Route53 record set doesn't exist or already deleted \033[0m"
    fi
 
+#Delete task definition
+task_def_arn=`aws ecs describe-task-definition --task-definition $TRAVIS_BRANCH | jq -r .taskDefinition.taskDefinitionArn` 
+
+  if [ -n "$task_def_arn" ];then
+    while [ "$task_def_arn" != "" ]; do 
+      aws ecs deregister-task-definition --task-definition $task_def_arn
+      task_def_arn=`aws ecs describe-task-definition --task-definition $TRAVIS_BRANCH | jq -r .taskDefinition.taskDefinitionArn`
+    done
+
+    echo -e "\033[31m Task definition deleted \033[0m"
+  else
+    echo -e "\033[31m Task definition doesn't exist or already deleted \033[0m"
+   fi 
+
 else
   echo -e "\033[31m This is a resources creation operation. Nothing will be destroyed. \033[0m"
 fi
