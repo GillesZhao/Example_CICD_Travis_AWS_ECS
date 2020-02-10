@@ -46,6 +46,8 @@ jobs:
 
     script:
 
+      - echo Deployment starts ...
+
       - ./create_alb_target_group.sh
 
       - ./create_task_definitions.sh
