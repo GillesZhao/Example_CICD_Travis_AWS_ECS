@@ -42,25 +42,32 @@ jobs:
 
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$redis_NAME:$TRAVIS_BRANCH
 
-  - stage: run ap tests
-
-    script: echo "Testing Finish"
-
-  - stage: Deploy app to aws ecs...
+  
+  - stage: Deploy Application to AWS ...
 
     script:
 
-      - echo Updating aws ecs task definitions...
+      - echo 1. Creating AWS ALB target group ...
 
       - ./create_alb_target_group.sh
 
+      - echo 2. Creating AWS ECS Task definitions ...
+
       - ./create_task_definitions.sh
+
+      - echo 3. Creating AWS ALB listener rules ...
 
       - ./create_alb_listener_rules.sh
 
+      - echo 4. Creating AWS ECS Service ...
+
       - ./create_ecs_service.sh
 
+      - echo 5. Creating AWS ALB Route53 Alias A record ...
+
       - ./create_route53_alias.sh
+
+      - echo Destroy AWS resources if deletion_mark=1 ...
 
       - ./destroy_resources.sh
 
