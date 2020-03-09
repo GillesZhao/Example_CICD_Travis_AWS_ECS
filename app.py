@@ -20,7 +20,7 @@ def get_hit_count():
 @app.route('/')
 def hello():
     count = get_hit_count()
-    if count <= 3000:
+    if count > 3000:
       #return 'Wonderful! Juwai website new version deployed. count = {}\n'.format(count)
       #return 'This is Juwai old website. count = {}\n'.format(count)
       #return 'HW-277 RPC IQI agent registion . count = {}\n'.format(count)
@@ -29,7 +29,7 @@ def hello():
       #return 'This is Juwai old website. count = {}\n'.format(count)
       #return 'HW-277 RPC IQI agent registion . count = {}\n'.format(count)
       #return 'HW-287 RPC function for password . \n'.format(count)
-      return '{} master branch test ECS logging.\n'.format(random.randint(50000,90000)) 
+      return '{} master ok branch test ECS logging.\n'.format(random.randint(50000,90000)) 
     elif count < 5000:
       return 'Hello Guys! Juwai website version {} is coming.\n'.format(count)
     else:
