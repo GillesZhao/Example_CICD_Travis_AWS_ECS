@@ -71,7 +71,7 @@ notifications:
     on_pull_requests: true
 
     rooms:
-     - juwai:fbVrH3u9xkfC95YsIFFsCcbO
+     - xxxx:xxxxxxxxxxxxxxxxxxxx
 
     on_success: always # default: always
 
