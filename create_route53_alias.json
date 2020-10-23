@@ -3,7 +3,7 @@
      "Changes": [{
                 "Action": "CREATE",
                 "ResourceRecordSet": {
-                            "Name": "'"$TRAVIS_BRANCH"'.juwai.xyz.",
+                            "Name": "'"$TRAVIS_BRANCH"'.example.xyz.",
                             "Type": "A",
                             "AliasTarget":{
                                     "HostedZoneId": "Z1LMS91P8CMLE5",
